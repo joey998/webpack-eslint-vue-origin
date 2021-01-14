@@ -1,0 +1,55 @@
+html{
+  font-size: (16/1920) * 100vw;
+}
+
+body {
+  background-color: #0b1a2d;
+  color: white;
+}
+
+select {
+  background: $primaryBackground;
+}
+
+select:focus {
+  outline: 0;
+}
+
+option {
+  background: $primaryBackground;
+}
+
+.el-tree {
+  background: $primaryBackground;
+  color: white;
+
+  .el-tree-node__content, .el-tree-node__content:hover, .el-tree-node:focus > .el-tree-node__content {
+    background: $primaryBackground;
+  }
+  
+}
+
+.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+  background-color: #083e7b;
+}
+
+
+.jm-button {
+  padding: 0 10px;
+  height: 30px;
+  border: 1px solid $primaryBorder;
+  line-height: 30px;
+}
+
+.to-right{
+  float: right;
+}
+
+.angel-reverse {
+  transform: rotate(180deg);
+}
+
+
+div{
+  box-sizing: border-box;
+}

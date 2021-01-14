@@ -1,0 +1,60 @@
+// 给一个元素的border添加线条, 宽度只能是1px
+// div{@extend %addCornerBorder;}
+%addCornerBorder {
+  position: relative;
+  border: 1px solid #036e9a;
+  box-sizing: border-box;
+
+  &:hover:before{
+    height: 0;
+  }
+  &::before{
+    content: "";
+    width: 100%;
+    height: calc(100% - 20px);
+    left: -1px;
+    right: -1px;
+    top: 10px;
+    border: {
+      left: 1px solid transparent;
+      right: 1px solid transparent;
+      image: linear-gradient(to bottom, #0a2c43, #036e9a, #0a2c43) 1 30;
+    }
+    position: absolute;
+    transition: all 1s;
+  }
+  &:hover:after{
+    width: 0;
+  }
+  &::after{
+    content: "";
+    width: calc(100% - 20px);
+    height: 100%;
+    top: -1px;
+    bottom: -1px;
+    left: 10px;
+    border: {
+      top: 1px solid transparent;
+      bottom: 1px solid transparent;
+      image: linear-gradient(to right, #0a2c43, #036e9a, #0a2c43) 30 1;
+    }
+    position: absolute;
+    transition: all 1s;
+  }
+}
+
+$primaryBackground: #0d1d37;
+$primaryBorder: #4266a0;
+
+@function vw($px) {
+  @return ($px / 1920) * 100vw;
+}
+
+@function vh($px) {
+  @return ($px / 1080) * 100vh;
+}
+
+@function vm($px) {
+  @return $px + px;
+}
+
