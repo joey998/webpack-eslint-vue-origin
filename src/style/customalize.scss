@@ -33,12 +33,24 @@ option {
   background-color: #083e7b;
 }
 
+.el-menu{
+  border-right: 0;
+}
 
 .jm-button {
-  padding: 0 10px;
-  height: 30px;
+  display: inline-block;
+  box-sizing: content-box;
+  padding: 0 vw(10);
+  height: vh(30);
   border: 1px solid $primaryBorder;
-  line-height: 30px;
+  line-height: vh(30);
+  text-align: center;
+}
+
+.jm-button-light {
+  display: block;
+  background: #0b7cb3;
+  color: white;
 }
 
 .to-right{
@@ -52,4 +64,15 @@ option {
 
 div{
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar-track{
+  background: $primaryBackground;
+}
+::-webkit-scrollbar-thumb{
+  background: #057b9e;
+  border-radius: vh(5);
+}
+::-webkit-scrollbar{
+  width: vw(3);
 }

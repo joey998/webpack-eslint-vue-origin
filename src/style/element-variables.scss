@@ -5,6 +5,11 @@ $--color-primary: teal;
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 /* $--color-white: black; */
-
+$--color-white: $primaryBackground;
+$--border-color-base: $primaryBorder;
+$--color-text-regular: white;
+$--color-text-primary: white;
+$--color-text-secondary: white;
+$--color-text-placeholder: white;
 @import "~element-ui/packages/theme-chalk/src/index";
 

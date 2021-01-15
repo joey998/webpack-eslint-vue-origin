@@ -139,7 +139,7 @@ export default {
       border: 1px solid $primaryBorder;
       border-top: none;
       .jm-select__option{
-        margin: vm(5);
+        margin: vh(5) vw(5);
         &:hover{
           background: white;
           color: $primaryBorder;

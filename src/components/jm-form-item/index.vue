@@ -8,7 +8,6 @@
     </div>
     <div
       class="jm-form-item__value"
-      contenteditable="true"
     >
       <input
         :value="valueModel"
@@ -48,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
   .jm-form-item{
-    font-size: vm(15);
+    font-size: vw(15);
     margin-bottom: vh(10);
     display: flex;
     justify-content: space-between;

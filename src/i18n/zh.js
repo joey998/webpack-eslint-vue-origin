@@ -53,6 +53,7 @@ export default {
       lvXingJieGuo: "旅行结果",
       lvYouLeiXing: "旅游类型",
       jiaRuFangJian: "已加入房间",
+      chaKanZuoYe: "查看作业详情",
     },
   },
 };

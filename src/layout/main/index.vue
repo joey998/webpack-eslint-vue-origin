@@ -14,7 +14,7 @@ export default {
  .app-main{
    display: flex;
    flex-grow: 1;
-   margin: 0 vm(20);
+   margin: 0 vw(20);
    height: vh(980)
  }
 </style>

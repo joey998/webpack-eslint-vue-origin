@@ -49,11 +49,12 @@
       </div>
     </div>
     <div class="main-right">
-      <div class="title">
-        {{ $t("main.gateAssignment.caiJiXinXi") }}
-      </div>
-      <div class="middle-container">
-        <jm-form-item
+      <div class="main-right-container">
+        <div class="title">
+          {{ $t("main.gateAssignment.caiJiXinXi") }}
+        </div>
+        <div class="middle-container">
+          <!-- <jm-form-item
           :value.sync="info.chePaiHao"
           :label="$t('main.gateAssignment.chePaiHao')"
           label-width="90px"
@@ -72,7 +73,117 @@
           :value.sync="info.chePaiHao"
           :label="$t('main.gateAssignment.chengZhong')"
           label-width="90px"
-        />
+        /> -->
+          <div class="jm-form-item">
+            <div
+              class="jm-form-item__label"
+            >
+              {{ $t("main.gateAssignment.chePaiHao") }}
+            </div>
+            <div
+              class="jm-form-item__value"
+            >
+              <input v-model="info.chePaiHao">
+            </div>
+          </div>
+          <div class="jm-form-item">
+            <div
+              class="jm-form-item__label"
+            >
+              {{ $t("main.gateAssignment.shiBieChePaiHao") }}
+            </div>
+            <div
+              class="jm-form-item__value"
+            >
+              <input v-model="info.shiBieChePaiHao">
+            </div>
+          </div>
+          <div class="jm-form-item">
+            <div
+              class="jm-form-item__label"
+            >
+              {{ $t("main.gateAssignment.ICKaHao") }}
+            </div>
+            <div
+              class="jm-form-item__value"
+            >
+              <input v-model="info.ICKaHao">
+            </div>
+          </div>
+          <div class="jm-form-item">
+            <div
+              class="jm-form-item__label"
+            >
+              {{ $t("main.gateAssignment.chengZhong") }}
+            </div>
+            <div
+              class="jm-form-item__value"
+            >
+              <input v-model="info.chengZhong">
+            </div>
+          </div>
+
+          <div class="beaf-box">
+            <div class="label">
+              {{ $t("main.gateAssignment.qianXiang") }}
+            </div>
+            <div class="value">
+              <textarea v-model="info.qianXiang" />
+            </div>
+          </div>
+          <div class="jm-button damaged">
+            添加残损
+          </div>
+          <div class="beaf-box">
+            <div class="label">
+              {{ $t("main.gateAssignment.houXiang") }}
+            </div>
+            <div class="value">
+              <textarea v-model="info.houXiang" />
+            </div>
+          </div>
+          <div class="jm-button damaged">
+            添加残损
+          </div>
+          <div class="jm-button jm-button-light status">
+            {{ $t("main.gateAssignment.chaKanZuoYe") }}
+          </div>
+          <div class="jm-form-item">
+            <div
+              class="jm-form-item__label"
+            >
+              {{ $t("main.gateAssignment.lvXingLeiXing") }}
+            </div>
+            <div
+              class="jm-form-item__value"
+            >
+              <input v-model="info.lvXingLeiXing">
+            </div>
+          </div>
+          <div class="beaf-box">
+            <div class="label">
+              {{ $t("main.gateAssignment.lvXingJieGuo") }}
+            </div>
+            <div class="value">
+              <textarea v-model="info.lvXingJieGuo" />
+            </div>
+          </div>
+          <div class="beaf-box">
+            <div class="label">
+              {{ $t("main.gateAssignment.lvYouLeiXing") }}
+            </div>
+            <div class="value">
+              <textarea v-model="info.lvYouLeiXing" />
+            </div>
+          </div>
+          <div class="jm-button jm-button-light status">
+            {{ $t("main.gateAssignment.chaKanZuoYe") }}
+          </div>
+          <div>
+            <span>{{ $t("main.gateAssignment.jiaRuFangJian") }}</span>
+            <span>ffsd</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -80,11 +191,11 @@
 
 <script>
 import Gril1 from "@/assets/pic/gril1.jpg";
-import jmFormItem from "@/components/jm-form-item";
+import request from "@/utils/request";
 
 export default {
   components: {
-    jmFormItem,
+    // jmFormItem,
   },
   data() {
     return {
@@ -156,9 +267,21 @@ export default {
       ],
       info: {
         chePaiHao: "rewr",
+        shiBieChePaiHao: "3333",
+        ICKaHao: "fdsafs",
+        chengZhong: "fsdaw34234",
+        qianXiang: "前箱",
+        houXiang: "后箱",
+        lvXingLeiXing: "旅行类型",
+        lvXingJieGuo: "旅行结果",
+        lvYouLeiXing: "旅游类型",
+        jiaRuFangJian: "已加入房间",
       },
 
     };
+  },
+  mounted() {
+
   },
 };
 </script>
@@ -171,10 +294,14 @@ export default {
   .main-left {
     width: vw(280);
     margin-bottom: vh(20);
+    padding-right: vw(3);
     max-height: vh(928);
     /** height: calc(100vh - 10px); */
     overflow-y: scroll;
     .info {
+      &:nth-of-type(1) {
+        margin-top: 0;
+      }
       padding: vh(20) vw(20);
       margin-top: vh(20);
       @extend %addCornerBorder;
@@ -230,12 +357,67 @@ export default {
     @extend %addCornerBorder;
     width: vw(278);
     height: vh(928);
-    padding: vh(20) vw(20);
-    .title{
-      font-weight: bold;
-    }
-    .middle-container{
-      padding: vh(20) vw(10);
+    font-size: vh(14);
+    .main-right-container{
+      padding: vh(20) vw(20);
+
+      .title{
+        font-size: vh(17);
+        font-weight: bold;
+      }
+      .middle-container{
+        padding: vh(20) 0 vh(20) vw(10);
+        .jm-form-item{
+          margin-bottom: vh(10);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .jm-form-item__label{
+            width: vw(90);
+            flex-shrink: 0;
+          }
+          .jm-form-item__value{
+            input{
+              padding: vh(4) vw(4);
+              width: 100%;
+              height: vh(28);
+              border: 1px solid $primaryBorder;
+              background: $primaryBackground;
+              color: white;
+              outline: none;
+              box-sizing: border-box;
+            }
+          }
+        }
+        .beaf-box{
+          margin-top: vh(15);
+          .label {
+            margin-bottom: vh(8);
+          }
+          .value{
+            textarea{
+              line-height: vh(22);
+              padding: vh(5) vw(5);
+              resize: none;
+              width: 100%;
+              height: vh(70);
+              background: $primaryBackground;
+              color: white;
+              outline: none;
+              border: 1px solid $primaryBorder;
+              box-sizing: border-box;
+            }
+          }
+        }
+        .status{
+          margin-top: vh(10);
+          margin-bottom: vh(15);
+          height: vh(28);
+        }
+        .damaged{
+          margin-top: vh(8);
+        }
+      }
 
     }
   }

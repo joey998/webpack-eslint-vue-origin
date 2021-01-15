@@ -54,6 +54,7 @@ $primaryBorder: #4266a0;
   @return ($px / 1080) * 100vh;
 }
 
+/* 没啥用，这样写不会转换成vh或者vw，好像没啥用*/
 @function vm($px) {
   @return $px + px;
 }
