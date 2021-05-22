@@ -2,6 +2,7 @@ const { merge } = require("webpack-merge");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 // const PrerenderSPAPlugin = require("prerender-spa-plugin");
 const path = require("path");
+const PrerenderSPAPlugin = require("prerender-spa-plugin");
 const common = require("./webpack.common");
 
 module.exports = merge(common, {
@@ -9,7 +10,7 @@ module.exports = merge(common, {
   output: {
     filename: "static/js/[name].[contenthash:6].prod.js",
     // filename: "static/js/[name].[contenthash:6].prod.js",
-    publicPath: "./",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -28,6 +29,13 @@ module.exports = merge(common, {
     //   // List of routes to prerender
     //   ["/"],
     // ),
+
+    new PrerenderSPAPlugin({
+      // Required - The path to the webpack-outputted app to prerender.
+      staticDir: path.join(__dirname, "dist"),
+      // Required - Routes to render.
+      routes: ["/", "/zhakouzuoye/qichezuoye", "/xitongguanli/gangweiguanli"],
+    }),
   ],
   optimization: {
     minimize: true,

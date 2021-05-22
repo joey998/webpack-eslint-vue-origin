@@ -37,6 +37,11 @@ option {
   border-right: 0;
 }
 
+li.el-submenu.is-opened>div{
+  background-image: linear-gradient(to right, #0c3d70, #0c284a);
+  
+}
+
 .jm-button {
   display: inline-block;
   box-sizing: content-box;
