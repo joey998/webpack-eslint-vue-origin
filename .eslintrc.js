@@ -24,6 +24,7 @@ module.exports = {
   ],
   rules: {
     quotes: ["error", "double"],
+    "linebreak-style": ["off"],
     "import/no-unresolved": [1, { commonjs: true, amd: true }],
     "import/extensions": [1, "always", { js: "never", vue: "never" }], // 解决后缀问题 Missing file extension for "./siderbar"  eslint  import/extensions
     "import/no-extraneous-dependencies": [2, { devDependencies: true }],
