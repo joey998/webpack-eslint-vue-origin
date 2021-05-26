@@ -35,7 +35,12 @@ module.exports = {
       {
         test: /\.s?css$/i,
         use: [
-          MiniCssExtractPlugin.loader, // 不能删除
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "/",
+            },
+          }, // 不能删除
           // "vue-style-loader", //不要使用这个官网案例，这个东西不能用了
           // "style-loader",
           "css-loader",
@@ -73,7 +78,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "static/css/[name].css",
+    }),
   ],
   optimization: {
     runtimeChunk: "single",

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class createIns {
+      constructor(){
+        this.a = 12;
+        // console.log(this, this.a);
+        // dd()
+        // console.log(this, this.a)
+        // (() => console.log(this.a))()
+        this.dc('fds')
+        // this.del(this)
+        return [12]
+      }
+
+      dc(fdsa){
+        console.log(fdsa,this);
+      }
+
+      del(thisIns){
+        thisIns = null;
+      }
+    }
+    
+    outerObj = {
+      c: {
+        haha: 1,
+        outer: function(fn){
+          fn()
+          console.log("outer", this)
+        }
+      }
+    }
+
+    function inner(){
+      console.log("inner", this)
+    }
+
+    
+    let mm = new createIns()
+
+    console.log(outerObj.c.outer(inner))
+  </script>
+</body>
+</html>

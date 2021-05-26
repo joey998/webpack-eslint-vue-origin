@@ -1,10 +1,18 @@
 <template>
-  <div class="container">
+  <div class="container gate-assignment_container">
     <div class="main-left">
-      <div
+      <!-- <div
         v-for="item in items"
         :key="item.value"
         class="info"
+      >
+        <div class="info-initial"> -->
+      <JmBgContainer
+        v-for="item in items"
+        :key="item.value"
+        class="info"
+        padding="10px"
+        :on-hover="true"
       >
         <div class="total-info">
           <span class="bolder">{{ item.carNumber }}</span>
@@ -22,7 +30,9 @@
           <span>{{ $t("main.dashboard.houXiangHao") }}</span>
           <span class="blue-color">{{ item.afterNumber }}</span>
         </div>
-      </div>
+      </JmBgContainer>
+      <!-- </div>
+      </div> -->
     </div>
     <div class="main-center">
       <div
@@ -49,12 +59,13 @@
       </div>
     </div>
     <div class="main-right">
-      <div class="main-right-container">
-        <div class="title">
-          {{ $t("main.gateAssignment.caiJiXinXi") }}
-        </div>
-        <div class="middle-container">
-          <!-- <jm-form-item
+      <JmBgContainer padding="1px">
+        <div class="main-right-container">
+          <div class="title">
+            {{ $t("main.gateAssignment.caiJiXinXi") }}
+          </div>
+          <div class="middle-container">
+            <!-- <jm-form-item
           :value.sync="info.chePaiHao"
           :label="$t('main.gateAssignment.chePaiHao')"
           label-width="90px"
@@ -74,128 +85,131 @@
           :label="$t('main.gateAssignment.chengZhong')"
           label-width="90px"
         /> -->
-          <div class="jm-form-item">
-            <div
-              class="jm-form-item__label"
-            >
-              {{ $t("main.gateAssignment.chePaiHao") }}
+            <div class="jm-form-item">
+              <div
+                class="jm-form-item__label"
+              >
+                {{ $t("main.gateAssignment.chePaiHao") }}
+              </div>
+              <div
+                class="jm-form-item__value"
+              >
+                <input v-model="info.chePaiHao">
+              </div>
             </div>
-            <div
-              class="jm-form-item__value"
-            >
-              <input v-model="info.chePaiHao">
+            <div class="jm-form-item">
+              <div
+                class="jm-form-item__label"
+              >
+                {{ $t("main.gateAssignment.shiBieChePaiHao") }}
+              </div>
+              <div
+                class="jm-form-item__value"
+              >
+                <input v-model="info.shiBieChePaiHao">
+              </div>
             </div>
-          </div>
-          <div class="jm-form-item">
-            <div
-              class="jm-form-item__label"
-            >
-              {{ $t("main.gateAssignment.shiBieChePaiHao") }}
+            <div class="jm-form-item">
+              <div
+                class="jm-form-item__label"
+              >
+                {{ $t("main.gateAssignment.ICKaHao") }}
+              </div>
+              <div
+                class="jm-form-item__value"
+              >
+                <input v-model="info.ICKaHao">
+              </div>
             </div>
-            <div
-              class="jm-form-item__value"
-            >
-              <input v-model="info.shiBieChePaiHao">
+            <div class="jm-form-item">
+              <div
+                class="jm-form-item__label"
+              >
+                {{ $t("main.gateAssignment.chengZhong") }}
+              </div>
+              <div
+                class="jm-form-item__value"
+              >
+                <input v-model="info.chengZhong">
+              </div>
             </div>
-          </div>
-          <div class="jm-form-item">
-            <div
-              class="jm-form-item__label"
-            >
-              {{ $t("main.gateAssignment.ICKaHao") }}
-            </div>
-            <div
-              class="jm-form-item__value"
-            >
-              <input v-model="info.ICKaHao">
-            </div>
-          </div>
-          <div class="jm-form-item">
-            <div
-              class="jm-form-item__label"
-            >
-              {{ $t("main.gateAssignment.chengZhong") }}
-            </div>
-            <div
-              class="jm-form-item__value"
-            >
-              <input v-model="info.chengZhong">
-            </div>
-          </div>
 
-          <div class="beaf-box">
-            <div class="label">
-              {{ $t("main.gateAssignment.qianXiang") }}
+            <div class="beaf-box">
+              <div class="label">
+                {{ $t("main.gateAssignment.qianXiang") }}
+              </div>
+              <div class="value">
+                <textarea v-model="info.qianXiang" />
+              </div>
             </div>
-            <div class="value">
-              <textarea v-model="info.qianXiang" />
+            <div class="jm-button damaged">
+              添加残损
             </div>
-          </div>
-          <div class="jm-button damaged">
-            添加残损
-          </div>
-          <div class="beaf-box">
-            <div class="label">
-              {{ $t("main.gateAssignment.houXiang") }}
+            <div class="beaf-box">
+              <div class="label">
+                {{ $t("main.gateAssignment.houXiang") }}
+              </div>
+              <div class="value">
+                <textarea v-model="info.houXiang" />
+              </div>
             </div>
-            <div class="value">
-              <textarea v-model="info.houXiang" />
+            <div class="jm-button damaged">
+              添加残损
             </div>
-          </div>
-          <div class="jm-button damaged">
-            添加残损
-          </div>
-          <div class="jm-button jm-button-light status">
-            {{ $t("main.gateAssignment.chaKanZuoYe") }}
-          </div>
-          <div class="jm-form-item">
-            <div
-              class="jm-form-item__label"
-            >
-              {{ $t("main.gateAssignment.lvXingLeiXing") }}
+            <div class="jm-button jm-button-light status">
+              {{ $t("main.gateAssignment.chaKanZuoYe") }}
             </div>
-            <div
-              class="jm-form-item__value"
-            >
-              <input v-model="info.lvXingLeiXing">
+            <div class="jm-form-item">
+              <div
+                class="jm-form-item__label"
+              >
+                {{ $t("main.gateAssignment.lvXingLeiXing") }}
+              </div>
+              <div
+                class="jm-form-item__value"
+              >
+                <input v-model="info.lvXingLeiXing">
+              </div>
             </div>
-          </div>
-          <div class="beaf-box">
-            <div class="label">
-              {{ $t("main.gateAssignment.lvXingJieGuo") }}
+            <div class="beaf-box">
+              <div class="label">
+                {{ $t("main.gateAssignment.lvXingJieGuo") }}
+              </div>
+              <div class="value">
+                <textarea v-model="info.lvXingJieGuo" />
+              </div>
             </div>
-            <div class="value">
-              <textarea v-model="info.lvXingJieGuo" />
+            <div class="beaf-box">
+              <div class="label">
+                {{ $t("main.gateAssignment.lvYouLeiXing") }}
+              </div>
+              <div class="value">
+                <textarea v-model="info.lvYouLeiXing" />
+              </div>
             </div>
-          </div>
-          <div class="beaf-box">
-            <div class="label">
-              {{ $t("main.gateAssignment.lvYouLeiXing") }}
+            <div class="jm-button jm-button-light status">
+              {{ $t("main.gateAssignment.chaKanZuoYe") }}
             </div>
-            <div class="value">
-              <textarea v-model="info.lvYouLeiXing" />
+            <div>
+              <span>{{ $t("main.gateAssignment.jiaRuFangJian") }}</span>
+              <span>ffsd</span>
             </div>
-          </div>
-          <div class="jm-button jm-button-light status">
-            {{ $t("main.gateAssignment.chaKanZuoYe") }}
-          </div>
-          <div>
-            <span>{{ $t("main.gateAssignment.jiaRuFangJian") }}</span>
-            <span>ffsd</span>
           </div>
         </div>
-      </div>
+      </JmBgContainer>
     </div>
   </div>
 </template>
 
 <script>
 import Gril1 from "@/assets/pic/gril1.jpg";
+import JmBgContainer from "@/components/jm-bg-container";
 import request from "@/utils/request";
 
 export default {
   components: {
     // jmFormItem,
+    JmBgContainer,
   },
   data() {
     return {
@@ -286,6 +300,18 @@ export default {
 };
 </script>
 
+<style lang="scss">
+  .gate-assignment_container{
+    .main-left{
+      .info:hover{
+        .bg-container{
+          background-color: #0c3f74;
+        }
+      }
+    }
+  }
+</style>
+
 <style lang="scss" scoped>
 .container{
   flex-grow: 1;
@@ -302,9 +328,7 @@ export default {
       &:nth-of-type(1) {
         margin-top: 0;
       }
-      padding: vh(20) vw(20);
       margin-top: vh(20);
-      @extend %addCornerBorder;
       .total-info{
         display: flex;
         justify-content: space-between;
@@ -354,7 +378,6 @@ export default {
     }
   }
   .main-right{
-    @extend %addCornerBorder;
     width: vw(278);
     height: vh(928);
     font-size: vh(14);

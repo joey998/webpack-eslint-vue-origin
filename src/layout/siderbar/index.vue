@@ -1,36 +1,31 @@
 <template>
   <div class="app-siderbar">
-    <el-menu
-      mode="vertical"
-      default-active="1"
-      @select="selectChange"
-    >
-      <el-submenu
-        v-for="(submenus, index) in filteredMenu"
-        :key="submenus.title"
-        :index="index + 1 + ''"
+    <JmBgContainer padding="1px">
+      <el-menu
+        mode="vertical"
+        default-active="1"
+        :unique-opened="true"
+        @select="selectChange"
       >
-        <template slot="title">
-          {{ submenus.title }}
-        </template>
-        <el-menu-item
-          v-for="(item, subIndex) in submenus.children"
-          :key="item.title"
-          :index="(index + 1) + '-' + (subIndex + 1)"
-        >
-          {{ item.title }}
-        </el-menu-item>
-      </el-submenu>
-    </el-menu>
+        <sub-menu
+          :data="filteredMenu"
+          path=""
+        />
+      </el-menu>
+    </JmBgContainer>
   </div>
 </template>
 
 <script>
 import routes from "@/router/routes";
+import JmBgContainer from "@/components/jm-bg-container";
+import subMenu from "./components/sub-menu";
 
 export default {
   components: {
     // SiderBar,
+    JmBgContainer,
+    subMenu,
   },
   data() {
     return {
@@ -39,7 +34,7 @@ export default {
   },
   computed: {
     filteredMenu() {
-      return routes.filter((item) => item.title);
+      return routes.filter((item) => item.meta.hidden !== true);
     },
   },
   mounted() {
@@ -62,11 +57,17 @@ export default {
   margin: 0 0 0 vw(10);
   overflow-y: scroll;
   overflow-x: hidden;
-  @extend %addCornerBorder;
-
-  &::after{
-    bottom: -2px;
-    box-sizing: border-box;
+  /*  @extend %addCornerBackground; */
+}
+</style>
+<style lang="scss">
+.app-siderbar{
+  .jm-bg-container{
+    height: 100%;
+    .bg-container{
+      height: 100%;
+      overflow-y: scroll;
+    }
   }
 }
 </style>

@@ -7,6 +7,7 @@
     <div class="app-content_container">
       <Siderbar />
       <Main />
+      <!-- <router-view /> -->
     </div>
   </div>
 </template>
@@ -38,7 +39,6 @@ export default {
 
     .app-header_container {
       height: vh(60);
-      background: gray url('./assets/pic/gril1.jpg');
       margin-bottom: vh(20);
     }
 
